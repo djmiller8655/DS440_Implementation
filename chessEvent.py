@@ -83,8 +83,8 @@ class MetroAnalysisMainMenuFrame(tk.Frame):
         labelIntro.grid(column=0, row=0, columnspan=3, sticky="ew")
         
         ttk.Button(self, text="New Report", command=self.runNewReport).grid(column=0, row=1, columnspan=3, padx=4, pady=4)
-        ttk.Button(self, text="View Saved Reports", command=self.viewSavedReport).grid(column=2, row=2, padx=2, pady=2, sticky="w")
-        ttk.Button(self, text="Quit", command=self.mainApp.destroy).grid(column=0, row=4, columnspan=3, padx=4, pady=4)
+        ttk.Button(self, text="View Saved Reports", command=self.viewSavedReport).grid(column=1, row=1, padx=4, pady=4)
+        ttk.Button(self, text="Quit", command=self.mainApp.destroy).grid(column=2, row=1, columnspan=3, padx=4, pady=4)
 
         # Image display
         if os.path.exists('chess-bg2.gif'):
@@ -116,6 +116,12 @@ class MetroAnalysisParameterFrame(tk.Frame):
         self.mainApp = controller
         self.createWidgets()
 
+    def generateResults(self, *args):
+        pass
+        
+    def returnToMainMenu(self, *args):
+        self.mainApp.showFrame("MetroAnalysisMainMenuFrame")
+        
     def createWidgets(self):
         self.formEventName = StringVar(self, "")
         self.formEventDate = StringVar(self, "")
@@ -146,7 +152,9 @@ class MetroAnalysisParameterFrame(tk.Frame):
 
         tk.Entry(self, textvariable=self.estimateLength).grid(column=1, row=4, padx=2, pady=2, sticky="w")
         tk.Label(self, text="Time Series Length (in months)").grid(column=0, row=4, padx=2, pady=2, sticky="e")
-        
+
+        ttk.Button(self, text="Generate Report", command=self.generateResults).grid(column=0, row=5, padx=2, pady=2)
+        ttk.Button(self, text="Exit", command=self.returnToMainMenu).grid(column=1, row=5, padx=2, pady=2)
         '''
         frm = Frame(self)
         tk.Button(frm, text="Save", command=self.setSaveNewEvent).grid(column=0, row=0, padx=2, pady=2)
