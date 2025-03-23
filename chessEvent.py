@@ -196,8 +196,8 @@ class MetroAnalysisResultsFrame(tk.Frame):
         
     def createWidgets(self):
         tk.Label(self, text="Analysis Report", font=self.mainApp.appFonts['fontHeader']).grid(column=0, row=0, columnspan=4, padx=2, pady=2, sticky="ew")
-        tk.Button(frm, text="Save", command=self.saveResults).grid(column=0, row=1, padx=2, pady=2)
-        tk.Button(frm, text="Exit", command=self.returnToMainMenu).grid(column=1, row=1, padx=2, pady=2)
+        ttk.Button(self, text="Save", command=self.saveResults).grid(column=0, row=1, padx=2, pady=2)
+        ttk.Button(self, text="Exit", command=self.returnToMainMenu).grid(column=1, row=1, padx=2, pady=2)
 
 class MetroAnalysisSavedResultsFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -213,8 +213,8 @@ class MetroAnalysisSavedResultsFrame(tk.Frame):
         
     def createWidgets(self):
         tk.Label(self, text="Previous Report", font=self.mainApp.appFonts['fontHeader']).grid(column=0, row=0, columnspan=4, padx=2, pady=2, sticky="ew")
-        tk.Button(frm, text="Save", command=self.saveResults).grid(column=0, row=1, padx=2, pady=2)
-        tk.Button(frm, text="Exit", command=self.returnToMainMenu).grid(column=1, row=1, padx=2, pady=2)
+        ttk.Button(self, text="Save", command=self.saveResults).grid(column=0, row=1, padx=2, pady=2)
+        ttk.Button(self, text="Exit", command=self.returnToMainMenu).grid(column=1, row=1, padx=2, pady=2)
 ###################################################
 ### Change to the user's Document Directory and start the program!!
 
