@@ -55,20 +55,6 @@ class MetroAnalysisApp(tk.Tk):
     def deleteCurrentEvent(self):
         if messagebox.askyesno(message='Are you sure that you want to delete this event? There is no way to reverse this!', icon='question', title='Delete Event'):
             self.showFrame("MetroAnalysisMainMenuFrame")
- 
-    '''
-    def saveCrossTableReport(self):
-        fname = "CrossTable-Event"+str(self.activeEvent.id)+".txt"
-        f = open(fname, "w")
-        fdata = "Cross Tables for "+self.activeEvent.name+" on "+self.activeEvent.date + "\n\n"
-        for group in self.activeEvent.groups:
-            fdata += self.createCrossTable(group) + "\n"
-        f.write(fdata)
-        f.close()
-        strMessage = "Crosstables were saved to: " + os.getcwd() + "\\" + fname
-        messagebox.showinfo(message=strMessage)
-    '''
-    
     
 ######## OBJECT THAT IS THE MAIN MENU Frame - used to create or load an event
 
@@ -82,9 +68,9 @@ class MetroAnalysisMainMenuFrame(tk.Frame):
         labelIntro = tk.Label(self, text="Welcome to the Metro Analysis Tool!", font=self.mainApp.appFonts['fontBigger'])
         labelIntro.grid(column=0, row=0, columnspan=3, sticky="ew")
         
-        ttk.Button(self, text="New Report", command=self.runNewReport).grid(column=0, row=1, columnspan=3, padx=4, pady=4)
+        ttk.Button(self, text="New Report", command=self.runNewReport).grid(column=0, row=1, padx=4, pady=4)
         ttk.Button(self, text="View Saved Reports", command=self.viewSavedReport).grid(column=1, row=1, padx=4, pady=4)
-        ttk.Button(self, text="Quit", command=self.mainApp.destroy).grid(column=2, row=1, columnspan=3, padx=4, pady=4)
+        ttk.Button(self, text="Quit", command=self.mainApp.destroy).grid(column=2, row=1, padx=4, pady=4)
 
         # Image display
         if os.path.exists('chess-bg2.gif'):
@@ -155,39 +141,7 @@ class MetroAnalysisParameterFrame(tk.Frame):
 
         ttk.Button(self, text="Generate Report", command=self.generateResults).grid(column=0, row=5, padx=2, pady=2)
         ttk.Button(self, text="Exit", command=self.returnToMainMenu).grid(column=1, row=5, padx=2, pady=2)
-        '''
-        frm = Frame(self)
-        tk.Button(frm, text="Save", command=self.setSaveNewEvent).grid(column=0, row=0, padx=2, pady=2)
-        tk.Button(frm, text="Cancel", command=self.cancelCreateNewEvent).grid(column=1, row=0, padx=2, pady=2)
-        frm.grid(column=0, row=4, columnspan=2)
-        self.columnconfigure(0, weight=2)
-        self.columnconfigure(1, weight=5)
-        self.rowconfigure(3, weight=1)
-        '''
 
-    '''
-    def cancelCreateNewEvent(self, *args):
-        self.mainApp.showFrame("ChessEventMainMenuFrame")
-    '''
-
-    '''
-    def setSaveNewEvent(self, *args):
-        
-        # Grab the values and run the search --- for my use
-        edata = {}
-        edata["name"] = self.formEventName.get()
-        edata["date"] = self.formEventDate.get()
-        edata["groups"] = []
-        for tok in arrTokens:
-            if len(tok.strip()) > 0:
-                edata["groups"].append(tok.strip())
-        edata["status"] = "active"
-        self.mainApp.eventDB.load()
-        evt = Event(edata)
-        self.mainApp.eventDB.addRecord(evt)
-        self.mainApp.eventDB.save()
-        self.mainApp.setActiveEventWithId(evt.id)
-    '''
 ######### OBJECT THAT IS THE EVENT RESULT PAGE Frame - used to show the final generated report and allow saving
 
 class MetroAnalysisResultsFrame(tk.Frame):
