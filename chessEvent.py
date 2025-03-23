@@ -129,7 +129,7 @@ class MetroAnalysisParameterFrame(tk.Frame):
         self.nationalAppreciation = StringVar(self, "")
         self.estimateLength = StringVar(self, "")
 
-        tk.Label(self, text="Select Location Grouping of Homeprice Breakdown", font=self.mainApp.appFonts['fontHeader']).grid(column=0, row=0, columnspan=4, padx=2, pady=2, sticky="ew")
+        tk.Label(self, text="Select Parameters", font=self.mainApp.appFonts['fontHeader']).grid(column=0, row=0, columnspan=4, padx=2, pady=2, sticky="ew")
 
         ttk.Combobox(self, textvariable=self.groupingType, values=groupingValues, state="readonly").grid(column=1, row=1, padx=2, pady=2, sticky="w")
         tk.Label(self, text="Select Location Grouping of Homeprice Breakdown").grid(column=0, row=1, padx=2, pady=2, sticky="e")
@@ -180,36 +180,41 @@ class MetroAnalysisParameterFrame(tk.Frame):
         self.mainApp.eventDB.save()
         self.mainApp.setActiveEventWithId(evt.id)
     '''
-######### OBJECT THAT IS THE EVENT HOME PAGE Frame - used to manage and report on an event in progress
+######### OBJECT THAT IS THE EVENT RESULT PAGE Frame - used to show the final generated report and allow saving
 
 class MetroAnalysisResultsFrame(tk.Frame):
     def __init__(self, parent, controller):
         super().__init__(parent)
         self.mainApp = controller
         self.createWidgets()
-        
-    '''
-    def returnToMainMenu(self, *args):
-        self.mainApp.showFrame("ChessEventMainMenuFrame")
-    ''' 
     
-    def createWidgets(self):
+    def returnToMainMenu(self, *args):
+        self.mainApp.showFrame("MetroAnalysisMainMenuFrame")
+     
+    def saveResults(self, *args):
         pass
+        
+    def createWidgets(self):
+        tk.Label(self, text="Analysis Report", font=self.mainApp.appFonts['fontHeader']).grid(column=0, row=0, columnspan=4, padx=2, pady=2, sticky="ew")
+        tk.Button(frm, text="Save", command=self.saveResults).grid(column=0, row=1, padx=2, pady=2)
+        tk.Button(frm, text="Exit", command=self.returnToMainMenu).grid(column=1, row=1, padx=2, pady=2)
 
 class MetroAnalysisSavedResultsFrame(tk.Frame):
     def __init__(self, parent, controller):
         super().__init__(parent)
         self.mainApp = controller
         self.createWidgets()
-        
-    '''
-    def returnToMainMenu(self, *args):
-        self.mainApp.showFrame("ChessEventMainMenuFrame")
-    ''' 
     
-    def createWidgets(self):
+    def returnToMainMenu(self, *args):
+        self.mainApp.showFrame("MetroAnalysisMainMenuFrame")
+     
+    def saveResults(self, *args):
         pass
-
+        
+    def createWidgets(self):
+        tk.Label(self, text="Previous Report", font=self.mainApp.appFonts['fontHeader']).grid(column=0, row=0, columnspan=4, padx=2, pady=2, sticky="ew")
+        tk.Button(frm, text="Save", command=self.saveResults).grid(column=0, row=1, padx=2, pady=2)
+        tk.Button(frm, text="Exit", command=self.returnToMainMenu).grid(column=1, row=1, padx=2, pady=2)
 ###################################################
 ### Change to the user's Document Directory and start the program!!
 
