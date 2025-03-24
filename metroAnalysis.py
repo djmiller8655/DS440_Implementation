@@ -73,8 +73,8 @@ class MetroAnalysisMainMenuFrame(tk.Frame):
         ttk.Button(self, text="Quit", command=self.mainApp.destroy).grid(column=2, row=1, padx=4, pady=4)
 
         # Image display
-        if os.path.exists('chess-bg2.gif'):
-            imgChess = PhotoImage(file='chess-bg2.gif')
+        if os.path.exists('Metro.jpg'):
+            imgChess = PhotoImage(file='Metro.jpg')
             lblImage = ttk.Label(self, image=imgChess)
             lblImage.photo = imgChess
             lblImage.grid(column=0, row=5, columnspan=3, padx=4, pady=4)
