@@ -54,8 +54,7 @@ class MetroAnalysisApp(tk.Tk):
         '''
         sqlite3 Metro.db <<EOS
         .mode csv
-        .import school.csv schools
-        .import state.csv states
+        .import rawData.csv Zip
         EOS
         
         table = self.grouptingType.get()
