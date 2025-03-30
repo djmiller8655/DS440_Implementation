@@ -51,6 +51,12 @@ class MetroAnalysisApp(tk.Tk):
         frame.tkraise()
 
     def generateQuery(self):
+        sqlite3 Metro.db <<EOS
+        .mode csv
+        .import school.csv schools
+        .import state.csv states
+        EOS
+        
         table = self.grouptingType.get()
         start_date = self.reportStartDate.get()
         end_date = self.reportEndDate.get()
