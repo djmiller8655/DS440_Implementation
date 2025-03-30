@@ -51,6 +51,7 @@ class MetroAnalysisApp(tk.Tk):
         frame.tkraise()
 
     def generateQuery(self):
+        '''
         sqlite3 Metro.db <<EOS
         .mode csv
         .import school.csv schools
@@ -72,6 +73,8 @@ class MetroAnalysisApp(tk.Tk):
         AND estimate_length = '{estimate_length}'
         """
         return query
+        '''
+        pass
         
 
     def returnToMainMenu(self):
