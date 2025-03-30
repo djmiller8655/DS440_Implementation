@@ -8,6 +8,7 @@ import os
 import re
 import datetime
 from functools import partial
+import sqlite3
 
 ########### MAIN APPLICATION OBJECT - APPLICATION LOGIC, DB INSTANCES, AND Tk GUI PANEL
 ###########    has dict of frames that RAISE the active frame to the top depending on current need
@@ -48,6 +49,24 @@ class MetroAnalysisApp(tk.Tk):
         if cont == "MetroAnalysisEventHomeFrame":
             frame.createWidgets()
         frame.tkraise()
+
+    def generateQuery(self):
+        table = self.grouptingType.get()
+        start_date = self.reportStartDate.get()
+        end_date = self.reportEndDate.get()
+        #grouping_type = self.groupingType.get()
+        national_appreciation = self.nationalAppreciation.get()
+        estimate_length = self.estimateLength.get()
+
+        # Create the SELECT statement
+        query = f"""
+        SELECT * FROM '{table}'
+        WHERE report_date BETWEEN '{start_date}' AND '{end_date}'
+        AND national_appreciation = '{national_appreciation}'
+        AND estimate_length = '{estimate_length}'
+        """
+        return query
+        
 
     def returnToMainMenu(self):
         self.showFrame("MetroAnalysisMainMenuFrame")
@@ -104,6 +123,12 @@ class MetroAnalysisParameterFrame(tk.Frame):
 
     def generateResults(self, *args):
         pass
+        '''
+        query = generateQuery()
+        # Logic for graph generation
+        
+        self.mainApp.showFrame("MetroAnalysisResultsFrame")
+        '''
         
     def returnToMainMenu(self, *args):
         self.mainApp.showFrame("MetroAnalysisMainMenuFrame")
