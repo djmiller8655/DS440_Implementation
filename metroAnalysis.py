@@ -9,7 +9,7 @@ import re
 import datetime
 from functools import partial
 import sqlite3
-import generateQuery from Data
+from Data import generateQuery
 
 ########### MAIN APPLICATION OBJECT - APPLICATION LOGIC, DB INSTANCES, AND Tk GUI PANEL
 ###########    has dict of frames that RAISE the active frame to the top depending on current need
