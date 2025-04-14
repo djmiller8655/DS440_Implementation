@@ -106,14 +106,18 @@ class MetroAnalysisParameterFrame(tk.Frame):
         self.createWidgets()
 
     def generateResults(self, *args):
-        pass
+        if (self.groupingValues == '' or self.nationalAppreciation == '' or self.estimateLength == '' or self.reportStartDate == '' or self.reportEndDate == ''):
+            messagebox.showwarning("Warning", "You have left one of the necessary fields empty.")
+        elif (int(self.nationalAppreciation) >= 100 or int(self.nationalAppreciation) <= 0):
+            messagebox.showwarning("Warning", "You have included an unacceptable national appreciation value.")
+            
         '''
         query = generateQuery()
         # Logic for graph generation
         
         self.mainApp.showFrame("MetroAnalysisResultsFrame")
         '''
-        
+        pass
     def returnToMainMenu(self, *args):
         self.mainApp.showFrame("MetroAnalysisMainMenuFrame")
         
@@ -124,7 +128,7 @@ class MetroAnalysisParameterFrame(tk.Frame):
         self.reportEndDate = StringVar(self, "")
 
         self.grid(sticky="nsew", padx=4, pady=4)
-        groupingValues = ["Zip Code", "Metro", "County"]
+        groupingCategories = ["Zip Code", "Metro", "County"]
         self.groupingType = StringVar(self, "Zip Code")
         self.groupingValues = StringVar(self, "")
         self.nationalAppreciation = StringVar(self, "")
@@ -132,9 +136,9 @@ class MetroAnalysisParameterFrame(tk.Frame):
 
         tk.Label(self, text="Select Parameters", font=self.mainApp.appFonts['fontHeader']).grid(column=0, row=0, columnspan=4, padx=2, pady=2, sticky="ew")
 
-        ttk.Combobox(self, textvariable=self.groupingType, values=groupingValues, state="readonly").grid(column=1, row=1, padx=2, pady=2, sticky="w")
+        ttk.Combobox(self, textvariable=self.groupingType, values=groupingCategories, state="readonly").grid(column=1, row=1, padx=2, pady=2, sticky="w")
         tk.Label(self, text="Select Location Grouping of Homeprice Breakdown").grid(column=0, row=1, padx=2, pady=2, sticky="e")
-        tk.Entry(self, textvariable=self.reportStartDate).grid(column=3, row=1, padx=2, pady=2, sticky="w")
+        tk.Entry(self, textvariable=self.groupingValues).grid(column=3, row=1, padx=2, pady=2, sticky="w")
         tk.Label(self, text="Values: ").grid(column=2, row=1, padx=2, pady=2, sticky="e")
 
         tk.Entry(self, textvariable=self.reportStartDate).grid(column=1, row=2, padx=2, pady=2, sticky="w")
