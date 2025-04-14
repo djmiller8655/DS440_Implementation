@@ -108,9 +108,8 @@ class MetroAnalysisParameterFrame(tk.Frame):
     def generateResults(self, *args):
         if (self.groupingValues == '' or self.nationalAppreciation == '' or self.estimateLength == '' or self.reportStartDate == '' or self.reportEndDate == ''):
             messagebox.showwarning("Warning", "You have left one of the necessary fields empty.")
-        elif (int(self.nationalAppreciation) >= 100 or int(self.nationalAppreciation) <= 0):
-            messagebox.showwarning("Warning", "You have included an unacceptable national appreciation value.")
-            
+        elif (int(self.nationalAppreciation.get()) >= 100 or int(self.nationalAppreciation.get()) <= 0):
+            messagebox.showwarning("Warning", "You have included an unacceptable national appreciation value.")            
         '''
         query = generateQuery()
         # Logic for graph generation
