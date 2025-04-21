@@ -196,10 +196,10 @@ class MetroAnalysisParameterFrame(tk.Frame):
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         
         # For Testing (PA only)
-        #db_path = os.path.join(BASE_DIR, "Test.db")
+        db_path = os.path.join(BASE_DIR, "PA.db")
         
         # For all of USA
-        db_path = os.path.join(BASE_DIR, "Data.db")
+        #db_path = os.path.join(BASE_DIR, "Data.db")
         
         # Connect to DB
         connection = sqlite3.connect(db_path)
