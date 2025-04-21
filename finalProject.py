@@ -340,7 +340,7 @@ class MetroAnalysisParameterFrame(tk.Frame):
         # Create parameter objects with declarations
         self.groupingType = StringVar(self, "Zip Code")
         self.groupingValue1 = StringVar(self, "18064")
-        self.groupingValue2 = StringVar(self, "34287")
+        self.groupingValue2 = StringVar(self, "18066")
         self.reportStartDate = StringVar(self, "2022-01")
         self.reportEndDate = StringVar(self, "2025-03")
         self.nationalAppreciation = StringVar(self, "4")
